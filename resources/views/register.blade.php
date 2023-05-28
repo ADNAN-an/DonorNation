@@ -37,7 +37,7 @@
                     </div> -->
                     <button>Registrer</button>
                     <div class="register">
-                        <p>You have an account <a href="index.html">Login</a></p>
+                        <p>You have an account <a href="{{asset('login')}}">Login</a></p>
                     </div>
                 </form>
             </div>

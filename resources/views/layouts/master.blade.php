@@ -60,14 +60,14 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.html" class="logo me-auto"><img src="{{ asset('img/logoyy.png')}}" alt="" class="img-fluid"></a> 
+      <a href="{{asset('home')}}" class="logo me-auto"><img src="{{ asset('img/logoyy.png')}}" alt="" class="img-fluid"></a> 
       <h1 class="logo me-auto"><a href="index.html">DONORNATION</a></h1>
       
       
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li>
+          <li><a class="nav-link scrollto active" href="{{asset('home')}}">Accueil</a></li>
           <li><a class="nav-link scrollto" href="#about"> Donner du sang </a></li>
           <li><a class="nav-link scrollto" href="#services">Rechercher des donneurs</a></li>
           <li><a class="nav-link scrollto" href="#departments">Blog</a></li>
@@ -99,7 +99,7 @@
        
       </nav><!-- .navbar -->
 
-      <a href="file:///C:/Users/juan/OneDrive/Bureau/PFA/FORMULAIRE-DONOR.html" class="appointment-btn scrollto"><span class="d-none d-md-inline">Nous</span> Rejoindre</a>
+      <a href="{{asset('login')}}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Nous</span> Rejoindre</a>
 
     </div>
   </header><!-- End Header -->
