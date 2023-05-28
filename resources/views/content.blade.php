@@ -1,12 +1,14 @@
 @extends('layouts.master')
-
+<head>
+    <link rel="stylesheet" href="{{asset('css/index.css')}}" rel="stylesheet">
+</head>
 @section("content")
   <body>
       <section id="loginregister">
           <div class="form-box">
               <div class="form-value">
                   <form action="">
-                      <!-- <h2>LOGIN</h2> -->
+                    <h2>LOGIN</h2>
                       <div class="inputbox">
                           <ion-icon name="mail-outline"></ion-icon>
                           <input type="mail" required>
