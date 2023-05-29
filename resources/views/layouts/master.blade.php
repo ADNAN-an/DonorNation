@@ -67,7 +67,7 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="{{asset('home')}}">Accueil</a></li>
+          <li><a class="nav-link scrollto active" href="{{route('home')}}">Accueil</a></li>
           <li><a class="nav-link scrollto" href="#about"> Donner du sang </a></li>
           <li><a class="nav-link scrollto" href="#services">Rechercher des donneurs</a></li>
           <li><a class="nav-link scrollto" href="#departments">Blog</a></li>

@@ -12,7 +12,7 @@ section{
     width: 100%;
     margin-top: 80px;
     
-    background: url('../img/ImgForm1.jpg')no-repeat;
+    background: url('../img/form2.jpg')no-repeat;
     background-position: center;
     background-size: cover;
     
@@ -34,7 +34,7 @@ section{
 }
 h2{
     font-size: 2em;
-    color: #242323;
+    color: #ffffff;
     text-align: center;
     
 }
@@ -42,14 +42,14 @@ h2{
     position: relative;
     margin: 30px 0;
     width: 310px;
-    border-bottom: 2px solid #757272;
+    border-bottom: 2px solid #ffffff;
 }
 .inputbox label{
     position: absolute;
     top: 50%;
     left: 5px;
     transform: translateY(-50%);
-    color: #757272;
+    color: #ffffff;
     font-size: 1em;
     pointer-events: none;
     transition: .5s;
