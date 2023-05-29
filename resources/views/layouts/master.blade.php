@@ -71,7 +71,7 @@
           <li><a class="nav-link scrollto" href="#about"> Donner du sang </a></li>
           <li><a class="nav-link scrollto" href="#services">Rechercher des donneurs</a></li>
           <li><a class="nav-link scrollto" href="#departments">Blog</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contacts</a></li>
+          <li><a class="nav-link scrollto" href="#footer">Contacts</a></li>
 
 <!-- COMMENTED UNTIL REVIEW  -->
           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
@@ -130,7 +130,7 @@
                <div class="col-lg-4 col-md-6 footer-links">
                  <h4>Information</h4>
                  <ul>
-                 <li><i class="bx bx-chevron-right"></i> <a href="#">Accueil</a></li>
+                 <li><i class="bx bx-chevron-right"></i> <a href="{{route('home')}}">Accueil</a></li>
                  <li><i class="bx bx-chevron-right"></i> <a href="#">Donner du sang </a></li>
                  <li><i class="bx bx-chevron-right"></i> <a href="#">Rechercher des donneurs</a></li>
                  <li><i class="bx bx-chevron-right"></i> <a href="#">Blog</a></li>
