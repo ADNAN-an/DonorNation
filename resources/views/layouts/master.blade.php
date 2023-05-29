@@ -60,7 +60,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="{{asset('home')}}" class="logo me-auto"><img src="{{ asset('img/logoyy.png')}}" alt="" class="img-fluid"></a> 
+      <a href="{{route('home')}}" class="logo me-auto"><img src="{{ asset('img/logoyy.png')}}" alt="" class="img-fluid"></a> 
       <h1 class="logo me-auto"><a href="index.html">DONORNATION</a></h1>
       
       
