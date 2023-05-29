@@ -7,27 +7,48 @@
     <section>
         <div class="form-box">
             <div class="form-value">
-                <form action="">
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
                    <h2>REGISTER</h2>
                     <div class="inputbox">
                         <!-- <ion-icon name="mail-outline"></ion-icon> -->
-                        <input type="text" required>
+                        <input type="text" class="@error('name') is-invalid @enderror" required autocomplete="name" autofocus>
                         <label for="">Nom</label>
+                        @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
                     </div>
                     <div class="inputbox">
-                        <!-- <ion-icon name="lock-closed-outline"></ion-icon> -->
-                        <input type="text" required>
+                        <!-- <ion-icon name="name-outline"></ion-icon> -->
+                        <input type="text" class="@error('name') is-invalid @enderror"  required autocomplete="name" autofocus>
                         <label for="">Prenom</label>
+                        @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
                     </div>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <input type="mail" required>
+                        <input type="email" class="@error('email') is-invalid @enderror" required autocomplete="email">
                         <label for="">Email</label>
+                        @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" required>
+                        <input type="password" class="@error('password') is-invalid @enderror" required autocomplete="new-password">
                         <label for="">Password</label>
+                        @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
                     </div>
                     
                     <!-- <div class="forget">
