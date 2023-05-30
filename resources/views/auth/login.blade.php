@@ -12,8 +12,8 @@
                     <h2>LOGIN</h2>
                       <div class="inputbox">
                           <ion-icon name="mail-outline"></ion-icon>
-                          <input type="mail" class="@error('email') is-invalid @enderror" required autocomplete="email" autofocus>
-                          <label for="">Email</label>
+                          <input id="email" name="email" type="mail" class="@error('email') is-invalid @enderror" required autocomplete="email" autofocus>
+                          <label for="email">Email</label>
                           @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -22,8 +22,8 @@
                       </div>
                       <div class="inputbox">
                           <ion-icon name="lock-closed-outline"></ion-icon>
-                          <input type="password" class="@error('password') is-invalid @enderror" required autocomplete="current-password">
-                          <label for="">Password</label>
+                          <input id="password" name="password"  type="password" class="@error('password') is-invalid @enderror" required autocomplete="current-password">
+                          <label for="password">Password</label>
                           @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
