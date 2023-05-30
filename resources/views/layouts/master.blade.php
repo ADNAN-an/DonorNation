@@ -120,11 +120,7 @@
             </li>
         @endguest
    
-
-       
       </nav><!-- .navbar -->
-
-  
   </header><!-- End Header -->
 
   
