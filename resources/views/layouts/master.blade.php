@@ -99,7 +99,7 @@
        
       </nav><!-- .navbar -->
 
-      <a href="{{asset('login')}}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Nous</span> Rejoindre</a>
+      <a href="{{route('login')}}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Nous</span> Rejoindre</a>
 
     </div>
   </header><!-- End Header -->

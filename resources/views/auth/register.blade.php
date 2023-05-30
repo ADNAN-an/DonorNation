@@ -12,8 +12,8 @@
                    <h2>REGISTER</h2>
                     <div class="inputbox">
                         <!-- <ion-icon name="mail-outline"></ion-icon> -->
-                        <input type="text" class="@error('name') is-invalid @enderror" required autocomplete="name" autofocus>
-                        <label for="">Nom</label>
+                        <input type="text" id="name" name="name" class="@error('name') is-invalid @enderror" required autocomplete="name" autofocus>
+                        <label for="name">Nom</label>
                         @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -22,8 +22,8 @@
                     </div>
                     <div class="inputbox">
                         <!-- <ion-icon name="name-outline"></ion-icon> -->
-                        <input type="text" class="@error('name') is-invalid @enderror"  required autocomplete="name" autofocus>
-                        <label for="">Prenom</label>
+                        <input type="text" id="prenom" name="prenom" class="@error('name') is-invalid @enderror"  required autocomplete="name" autofocus>
+                        <label for="prenom">Prenom</label>
                         @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -32,8 +32,8 @@
                     </div>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <input type="email" class="@error('email') is-invalid @enderror" required autocomplete="email">
-                        <label for="">Email</label>
+                        <input type="email" id="email" name="email" class="@error('email') is-invalid @enderror" required autocomplete="email">
+                        <label for="email">Email</label>
                         @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -42,8 +42,8 @@
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" class="@error('password') is-invalid @enderror" required autocomplete="new-password">
-                        <label for="">Password</label>
+                        <input type="password" id="password" name="password" class="@error('password') is-invalid @enderror" required autocomplete="new-password">
+                        <label for="password">Password</label>
                         @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
