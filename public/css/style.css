@@ -166,7 +166,7 @@ h6 {
   background: #fff;
   transition: all 0.5s;
   z-index: 997;
-  padding: 15px 0;
+  padding: 10px 0;
   top: 0px;
   box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
 }
@@ -187,7 +187,7 @@ h6 {
 
 #header .logo a {
   color: #ee2525;
-  margin-left: -100px;
+  margin-right: 100px;
 }
 
 #header .logo img {
@@ -200,26 +200,30 @@ h6 {
 /**
 * Appointment Button *
 */
-.appointment-btn {
-  margin-left: 80px;
-  margin-right: -70px;
+
+a.appointment-btn.scrollto{
+  box-sizing: border-box;
+  margin-left: 40px;
+  margin-right: -60px;
   background: #ff0000;
   color: #fff;
   border-radius: 50px;
-  padding: 8px 25px;
+  /* padding: 8px 15px; */
+  /* padding-left: 20px;
+  padding-right: 20px; */
   white-space: nowrap;
-  transition: 0.3s;
+  /* transition: 0.1s; */
   font-size: 14px;
   display: inline-block;
 }
 
-.appointment-btn:hover {
+a.appointment-btn.scrollto:hover {
   background: #166ab5;
   color: #fff;
 }
 
 @media (max-width: 768px) {
-  .appointment-btn {
+  a.appointment-btn.scrollto {
     margin: 0 15px 0 0;
     padding: 6px 18px;
   }
@@ -250,11 +254,10 @@ h6 {
 .navbar>ul>li {
   position: relative;
   white-space: nowrap;
-  padding: 8px 0 8px 46px;
+  padding: 8px 0 8px 20px;
 }
 
-.navbar a,
-.navbar a:focus {
+.navbar a {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -263,7 +266,7 @@ h6 {
   white-space: nowrap;
   transition: 0.3s;
   border-bottom: 2px solid #fff;
-  padding: 5px 2px;
+  padding: 8px 15px;
 }
 
 .navbar a i,

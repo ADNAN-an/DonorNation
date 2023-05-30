@@ -74,33 +74,12 @@
           <li><a class="nav-link scrollto" href="#departments">Blog</a></li>
           <li><a class="nav-link scrollto" href="#footer">Contacts</a></li>
 
-<!-- COMMENTED UNTIL REVIEW  -->
-          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li> 
-        </ul>
-           
-       <!-- <i class="bi bi-list mobile-nav-toggle"></i>  -->
 
             @guest
-            <a href="{{ route('login') }}" class="appointment-btn scrollto">
-                <span class="d-none d-md-inline">Nous</span> Rejoindre
-            </a>
-        @else
+
+            <a href="{{ route('login') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Nous</span> Rejoindre</a>
+      
+            @else
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }}
