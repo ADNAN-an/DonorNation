@@ -5,7 +5,7 @@
 @section("content")
 <body>
     <section>
-        <div class="form-box">
+        <div class="form-boxR">
             <div class="form-value">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -36,7 +36,7 @@
                     </div>
                     <div class="inputboxF">
                         <label class="m-0   color-dark" for="city">Ville</label><br>
-                        <select class="form-control" name="city" id="city" onchange="selectingCity(event)" required="">
+                        <select class="form-controlx" name="city" id="city" onchange="selectingCity(event)" required="">
                           <option disabled="" selected="" value=""> -- selectionner une ville -- </option>
                           <option value="Tanger">Tanger</option>
                           <option value="Tetouan">Tétouan</option>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="inputboxF">
                         <label class="m-0  color-dark" for="Type-de-sang">Type de sang</label><br>
-                        <select class="form-control" name="bg" id="bg" onchange="selectingbg(event)" required="">
+                        <select class="form-controlx" name="bg" id="bg" onchange="selectingbg(event)" required="">
                           <option disabled="" selected="" value=""> -- selectionner une type de sang -- </option>
                           <option value="A+">A+</option>
                           <option value="B+">B+</option>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="inputboxF">
                         <label class="m-0 not-required color-dark" for="Date-dernier-DON">Date du dernier DON</label><br>
-                       <input type="date" class="form-control" id="dod">  
+                       <input type="date" class="form-controlx" id="dod">  
                    </div>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
