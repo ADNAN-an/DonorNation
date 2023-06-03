@@ -21,7 +21,7 @@
              veuillez nous appeler au +212000000000.</h2>
     
           <a href="#about" class="btn-get-started scrollto"> Learn more </a>
-          <a href="#about" class="btn-get-started1 scrollto">Donner </a>
+          <a href="{{ route('register') }}" class="btn-get-started1 scrollto">Donner </a>
         </div>
 
         <div class="right">
