@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="{{asset('css/donner.css')}}" rel="stylesheet">
 </head>
 @section("content")
-<body>
     <section id="donner" class="d-flex align-items-center">
         <div class="left">
           <h1>Exigences selon le type <br>
@@ -29,5 +28,4 @@
             <img class="image" src="{{asset('img/donner.jpg')}}" alt="Image">
         </div>
       </section>
-</body>
 @endsection

@@ -69,12 +69,14 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="{{route('home')}}">Accueil</a></li>
-          <li><a class="nav-link scrollto" href="#about"> Donner du sang </a></li>
+          @if (Auth::check())
+            <li><a class="nav-link scrollto" href="{{ route('home') }}">Donner du sang</a></li>
+          @else
+            <li><a class="nav-link scrollto" href="{{ url('/blood-donation-process') }}">Donner du sang</a></li>
+          @endif
           <li><a class="nav-link scrollto" href="#services">Rechercher des donneurs</a></li>
           <li><a class="nav-link scrollto" href="#departments">Blog</a></li>
           <li><a class="nav-link scrollto" href="#footer">Contacts</a></li>
-
-
             @guest
 
             <a href="{{ route('login') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Nous</span> Rejoindre</a>
