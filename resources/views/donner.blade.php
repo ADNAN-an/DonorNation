@@ -6,8 +6,8 @@
 @section("content")
     <section id="donner" class="d-flex align-items-center">
         <div class="left">
-          <h1>Exigences selon le type <br>
-              de don de sang<br></h1>
+          <h1>Exigences pour le don <br>
+               de sang<br></h1>
           <h2>Voici quelques-unes des exigences que les donneurs<br>
               doivent respecter pour être éligibles au don de sang<br>
               en fonction de leur type de don. </h2>
