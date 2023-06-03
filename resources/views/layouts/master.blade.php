@@ -64,24 +64,20 @@
       <a href="{{route('home')}}" class="logo me-auto"><img src="{{ asset('img/logoyy.png')}}" alt="" class="img-fluid"></a> 
       <h1 class="logo me-auto"><a href="index.html">DONORNATION</a></h1>
       
-      
-
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="{{route('home')}}">Accueil</a></li>
+          <li><a class="nav-link {{ Request::route()->getName() === 'home' ? 'active' : '' }}" href="{{ route('home') }}">Accueil</a></li>
           @if (Auth::check())
-            <li><a class="nav-link scrollto" href="{{ route('home') }}">Donner du sang</a></li>
+            <li><a class="nav-link {{ Request::route()->getName() === 'home' ? 'active' : '' }}" href="{{ route('home') }}">Donner du sang</a></li>
           @else
-            <li><a class="nav-link scrollto" href="{{ url('/blood-donation-process') }}">Donner du sang</a></li>
+          <li><a class="nav-link scrollto {{ Request::is('blood-donation-process') ? 'active' : '' }}" href="{{ url('/blood-donation-process') }}">Donner du sang</a></li>
           @endif
-          <li><a class="nav-link scrollto" href="#services">Rechercher des donneurs</a></li>
-          <li><a class="nav-link scrollto" href="#departments">Blog</a></li>
-          <li><a class="nav-link scrollto" href="#footer">Contacts</a></li>
-            @guest
-
-            <a href="{{ route('login') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Nous</span> Rejoindre</a>
-      
-            @else
+          <li><a class="nav-link {{ Request::route()->getName() === 'recherche' ? 'active' : '' }}" href="#services">Rechercher des donneurs</a></li>
+          <li><a class="nav-link {{ Request::route()->getName() === 'blog' ? 'active' : '' }}" href="#departments">Blog</a></li>
+          <li><a class="nav-link {{ Request::route()->getName() === 'contacts' ? 'active' : '' }}" href="#footer">Contacts</a></li>
+          @guest
+          <a href="{{ route('login') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Nous</span> Rejoindre</a>
+          @else
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }}
