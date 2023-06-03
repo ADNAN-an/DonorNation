@@ -31,12 +31,17 @@
                         @enderror
                     </div>
                     <div class="inputbox">
-                        <input type="text"   maxlength="10"  id="phone_number" required="">
+                        <input type="text"   maxlength="10"  id="phone_number" name="phone_number" required>
                         <label for="phone-number">Numéro de téléphone</label>
+                        @error('phone_number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
                     </div>
                     <div class="inputboxF">
                         <label class="m-0   color-dark" for="city">Ville</label><br>
-                        <select class="form-controlx" name="city" id="city" onchange="selectingCity(event)" required="">
+                        <select class="form-controlx" name="city" id="city" onchange="selectingCity(event)" required>
                           <option disabled="" selected="" value=""> -- selectionner une ville -- </option>
                           <option value="Tanger">Tanger</option>
                           <option value="Tetouan">Tétouan</option>
@@ -50,10 +55,15 @@
                           <option value="Oujda">Oujda</option>
                           <option value="Other">Other</option>
                         </select>
+                        @error('city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
                     </div>
                     <div class="inputboxF">
                         <label class="m-0  color-dark" for="Type-de-sang">Type de sang</label><br>
-                        <select class="form-controlx" name="bg" id="bg" onchange="selectingbg(event)" required="">
+                        <select class="form-controlx" name="bg" id="bg" onchange="selectingbg(event)" required>
                           <option disabled="" selected="" value=""> -- selectionner une type de sang -- </option>
                           <option value="A+">A+</option>
                           <option value="B+">B+</option>
@@ -65,10 +75,20 @@
                           <option value="O-">O-</option>
                           <option value="NA">I dont Know</option>
                         </select>
+                        @error('bg')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
                     </div>
                     <div class="inputboxF">
                         <label class="m-0 not-required color-dark" for="Date-dernier-DON">Date du dernier DON</label><br>
-                       <input type="date" class="form-controlx" id="dod">  
+                       <input type="date" class="form-controlx" id="dod" name="dod" required>  
+                       @error('dod')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
                    </div>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
