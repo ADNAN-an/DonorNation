@@ -25,7 +25,7 @@
         </div>
 
         <div class="right">
-            <img class="image" src="{{asset('img/donner.jpg')}}" alt="Image">
+            <img class="image" src="{{asset('../img/donner.jpg')}}" alt="Image">
         </div>
       </section>
 @endsection
