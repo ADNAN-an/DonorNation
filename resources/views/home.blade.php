@@ -8,7 +8,7 @@
     <h3>One pint of blood can save the live </h3>
 
     <a href="#about" class="btn-get-started scrollto">Donner du sang </a>
-    <a href="#about" class="btn-get-started1 scrollto">S'informer </a>
+    <a href="{{ url('/blood-donation-process') }}" class="btn-get-started1 scrollto">S'informer </a>
   </div>
 </section><!-- End Hero -->
 

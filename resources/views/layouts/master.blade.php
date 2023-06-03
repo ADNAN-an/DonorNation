@@ -76,27 +76,34 @@
           <li><a class="nav-link {{ Request::route()->getName() === 'blog' ? 'active' : '' }}" href="#departments">Blog</a></li>
           <li><a class="nav-link {{ Request::route()->getName() === 'contacts' ? 'active' : '' }}" href="#footer">Contacts</a></li>
           @guest
-          <a href="{{ route('login') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Nous</span> Rejoindre</a>
-          @else
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
+    <a href="{{ route('login') }}" class="appointment-btn scrollto">
+        <span class="d-none d-md-inline">Nous</span> Rejoindre
+    </a>
+@else
+    <li class="nav-item dropdown">
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            {{ Auth::user()->name }}
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li>
+                <a href="#" class="dropdown-item">
+                    <i class="fas fa-user me-2"></i> Mon compte &emsp; &emsp; &emsp; &emsp; &emsp;
                 </a>
-        
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li> <a href="#" class="Profile">Profile</a> </li>
-                    <li>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </li>
-                </ul>
             </li>
-        @endguest
+            <li>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt me-2"></i> {{ __('Logout') }} &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
+        </ul>
+    </li>
+@endguest
+
    
       </nav><!-- .navbar -->
   </header><!-- End Header -->
