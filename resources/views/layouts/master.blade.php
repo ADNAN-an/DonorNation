@@ -72,7 +72,7 @@
           @else
           <li><a class="nav-link scrollto {{ Request::is('blood-donation-process') ? 'active' : '' }}" href="{{ url('/blood-donation-process') }}">Donner du sang</a></li>
           @endif
-          <li><a class="nav-link {{ Request::route()->getName() === 'recherche' ? 'active' : '' }}" href="#services">Rechercher des donneurs</a></li>
+          <li><a class="nav-link {{ Request::route()->getName() === 'recherche' ? 'active' : '' }}" href="{{ url('/search') }}">Rechercher des donneurs</a></li>
           <li><a class="nav-link {{ Request::route()->getName() === 'blog' ? 'active' : '' }}" href="#departments">Blog</a></li>
           <li><a class="nav-link {{ Request::route()->getName() === 'contacts' ? 'active' : '' }}" href="#footer">Contacts</a></li>
           @guest
@@ -135,8 +135,12 @@
                  <h4>Information</h4>
                  <ul>
                  <li><i class="bx bx-chevron-right"></i> <a href="{{route('home')}}">Accueil</a></li>
-                 <li><i class="bx bx-chevron-right"></i> <a href="#">Donner du sang </a></li>
-                 <li><i class="bx bx-chevron-right"></i> <a href="#">Rechercher des donneurs</a></li>
+                 @if (Auth::check())
+                 <li><i class="bx bx-chevron-right"></i><a class="nav-link {{ Request::route()->getName() === 'home' ? 'active' : '' }}" href="{{ route('home') }}">Donner du sang</a></li>
+                 @else
+                 <li><i class="bx bx-chevron-right"></i><a class="nav-link scrollto {{ Request::is('blood-donation-process') ? 'active' : '' }}" href="{{ url('/blood-donation-process') }}">Donner du sang</a></li>
+                 @endif
+                 <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/search') }}">Rechercher des donneurs</a></li>
                  <li><i class="bx bx-chevron-right"></i> <a href="#">Blog</a></li>
                  <li><i class="bx bx-chevron-right"></i> <a href="#">Contacts</a></li>
                  </ul>

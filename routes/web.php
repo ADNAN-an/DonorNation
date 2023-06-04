@@ -25,11 +25,17 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 });
+
 Auth::routes();
 
 Route::get('/blood-donation-process', function () {
     return view('donner');
 });
+
+Route::get('/search', function () {
+    return view('search');
+});
+
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
