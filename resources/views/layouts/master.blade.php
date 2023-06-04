@@ -72,7 +72,7 @@
           @else
           <li><a class="nav-link scrollto {{ Request::is('blood-donation-process') ? 'active' : '' }}" href="{{ url('/blood-donation-process') }}">Donner du sang</a></li>
           @endif
-          <li><a class="nav-link {{ Request::route()->getName() === 'recherche' ? 'active' : '' }}" href="{{ url('/search') }}">Rechercher des donneurs</a></li>
+          <li><a class="nav-link {{ Request::is('search') ? 'active' : '' }}" href="{{ url('/search') }}">Rechercher des donneurs</a></li>
           <li><a class="nav-link {{ Request::route()->getName() === 'blog' ? 'active' : '' }}" href="#departments">Blog</a></li>
           <li><a class="nav-link {{ Request::route()->getName() === 'contacts' ? 'active' : '' }}" href="#footer">Contacts</a></li>
           @guest
@@ -140,7 +140,7 @@
                  @else
                  <li><i class="bx bx-chevron-right"></i><a class="nav-link scrollto {{ Request::is('blood-donation-process') ? 'active' : '' }}" href="{{ url('/blood-donation-process') }}">Donner du sang</a></li>
                  @endif
-                 <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/search') }}">Rechercher des donneurs</a></li>
+                 <li><i class="bx bx-chevron-right"></i> <a href="{{ route('search') }}">Rechercher des donneurs</a></li>
                  <li><i class="bx bx-chevron-right"></i> <a href="#">Blog</a></li>
                  <li><i class="bx bx-chevron-right"></i> <a href="#">Contacts</a></li>
                  </ul>

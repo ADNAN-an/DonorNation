@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\DonorSearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,10 +32,11 @@ Route::get('/blood-donation-process', function () {
     return view('donner');
 });
 
-Route::get('/search', function () {
-    return view('search');
-});
+// Route::get('/search', function () {
+//     return view('search');
+// });
 
+Route::get('/search', [DonorSearchController::class, 'search'])->name('search');
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

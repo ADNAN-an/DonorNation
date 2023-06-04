@@ -18,7 +18,7 @@
           <h4><i class="fa-solid fa-angle-right fa-xs" style="color: #1e3050;"></i> Vous devez peser au moins 50kg.</h4>
 
           <h2>Si vous avez des questions concernant votre éligibilité,<br>
-             veuillez nous appeler au +212000000000.</h2>
+             veuillez nous appeler au +212 537 77 33 24 </h2>
     
           <a href="#about" class="btn-get-started scrollto"> Learn more </a>
           <a href="{{ route('register') }}" class="btn-get-started1 scrollto">Donner </a>
