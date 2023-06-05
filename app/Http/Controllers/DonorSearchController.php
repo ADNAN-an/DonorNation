@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DonorSearchRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class DonorSearchController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('searchForm');
+        $request->flush();
+
+        return view('searchResults', ['allReadyToGiveDonors' => User::getReadyDonors()]);
     }
 
     public function search(DonorSearchRequest $request)
@@ -19,9 +23,9 @@ class DonorSearchController extends Controller
 
         $donors = User::where('BloodGroup', $request['BloodGroup'])
             ->where('city', $request['city'])
-            ->get();
+            ->paginate(10);
 
-        $filteredDonors = $donors->filter(function ($donor) {
+        $donors = $donors->filter(function ($donor) {
             return $donor->DateDernierDon <= now()->subDays(56);
         });
 
@@ -29,8 +33,8 @@ class DonorSearchController extends Controller
             'searchedBloodGroup' => $request['BloodGroup'],
             'searchedCity' => $request['city'],
             'donors' => $donors,
-            'filteredDonors' => $filteredDonors,
+            // 'filteredDonors' => $filteredDonors,
+            'otherDonors' => User::getOtherDonorsCanDonateTo($request['BloodGroup'], $request['city']),
         ]);
     }
 }
-

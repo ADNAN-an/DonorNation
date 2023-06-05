@@ -12,6 +12,7 @@
                     <h3 class="text-center mb-4">Trouver des donneurs de sang près de chez vous</h3>
                     <form id="donorsSearchForm" method="get" action="{{ route('donorsSearch') }}"
                         class="d-flex flex-column flex-xl-row gap-3" novalidate>
+                        @csrf
                         <div class="w-100">
                             <select name="BloodGroup" id="bloodGroup" class="form-select form-select-lg" required>
                                 <option selected hidden style="display:none" value=""> -- Type de sang --</option>
