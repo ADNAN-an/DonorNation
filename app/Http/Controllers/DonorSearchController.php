@@ -8,12 +8,16 @@ use App\Http\Requests\DonorSearchRequest;
 
 class DonorSearchController extends Controller
 {
+    public function index()
+    {
+        return view('searchForm');
+    }
+
     public function search(DonorSearchRequest $request)
     {
         $request->flash();
 
-        $donors = User::with('BloodGroup')
-            ->where('BloodGroup', $request['BloodGroup'])
+        $donors = User::where('BloodGroup', $request['BloodGroup'])
             ->where('city', $request['city'])
             ->get();
 
@@ -21,7 +25,7 @@ class DonorSearchController extends Controller
             return $donor->DateDernierDon <= now()->subDays(56);
         });
 
-        return view('search', [
+        return view('searchResults', [
             'searchedBloodGroup' => $request['BloodGroup'],
             'searchedCity' => $request['city'],
             'donors' => $donors,
@@ -29,3 +33,4 @@ class DonorSearchController extends Controller
         ]);
     }
 }
+

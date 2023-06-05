@@ -140,7 +140,7 @@
                  @else
                  <li><i class="bx bx-chevron-right"></i><a class="nav-link scrollto {{ Request::is('blood-donation-process') ? 'active' : '' }}" href="{{ url('/blood-donation-process') }}">Donner du sang</a></li>
                  @endif
-                 <li><i class="bx bx-chevron-right"></i> <a href="{{ route('search') }}">Rechercher des donneurs</a></li>
+                 <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/search') }}">Rechercher des donneurs</a></li>
                  <li><i class="bx bx-chevron-right"></i> <a href="#">Blog</a></li>
                  <li><i class="bx bx-chevron-right"></i> <a href="#">Contacts</a></li>
                  </ul>
