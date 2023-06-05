@@ -473,7 +473,7 @@ a.appointment-btn.scrollto:hover {
   height: 90vh;
   background: url("../img/photo1.jpg") top center;
   background-size: cover;
-  margin-bottom: -200px;
+  /* margin-bottom: -200px; */
 }
 
 #hero .container {
@@ -1835,6 +1835,11 @@ section {
   padding: 10px;
 }
 
+
+/* ---------------------------------------------
+       SECTION WITH 3 CASES
+--------------------------------------------- */
+    
 *{
 
   margin: 0;
@@ -1845,10 +1850,12 @@ section {
 }
 .flex-container{
   width: 100%;
-  height: auto; 
+  height: 400px; 
   display: flex;
   /* justify-content: space-between; */
   margin-left: 75px;
+  margin-top: 50px;
+  background-color: #e6f3ff;
 
 }
 
@@ -1864,29 +1871,30 @@ section {
   line-height: 200px;
   /* border-radius: 20px; */
   margin: 10px;
-  background : url("mt-1802-home-img01.jpg");
-  
+  background : url('../img/mt-1802-home-img01.jpg')no-repeat; 
 }
 .flex-box1 button{
 
 border: none;
 margin-left: -160px;
+/* margin-top:-100px; */
 font-weight: 700;
 font-size: 14px;
 letter-spacing: 1px;
 display: inline-block;
-padding: 14px 35px;
+padding: 15px 35px;
 /* border-radius: 50px; */
 transition: 0.3s;
 color: #ffffff;
 background-color: red;
 cursor: pointer;
+line-height: normal;
 }
 .flex-box1 h1{
 font-weight: 800;
 font-size: 35px;
-margin-top: 90px;
-margin-bottom: -140px;
+margin-top:160px; 
+margin-bottom: -60px;
 margin-right: 145px ;
 color: rgb(255, 255, 255);
   
@@ -1901,8 +1909,7 @@ color: rgb(255, 255, 255);
   line-height: 200px;
   /* border-radius: 20px; */
   margin: 10px;
-  background : url("mt-1802-home-img04.jpg");
-  
+  background : url('../img/mt-1802-home-img04.jpg')no-repeat;  
 }
 .flex-box2 button{
 
@@ -1918,12 +1925,14 @@ color: rgb(255, 255, 255);
   color: #ffffff;
   background-color: red;
   cursor: pointer;
+  line-height: normal;
+
   }
   .flex-box2 h1{
   font-weight: 800;
   font-size: 35px;
-  margin-top: 90px;
-  margin-bottom: -140px;
+  margin-top: 160px;
+  margin-bottom: -60px;
   margin-right: 100px ;
   color: rgb(255, 255, 255);
       
@@ -1940,7 +1949,7 @@ color: rgb(255, 255, 255);
   line-height: 200px;
   /* border-radius: 20px; */
   margin: 10px;
-  background : url("mt-1802-appointment-img02.jpg");
+  background : url('../img/mt-1802-appointment-img02.jpg')no-repeat;
 
   
   
@@ -1959,15 +1968,20 @@ color: rgb(255, 255, 255);
   color: #ffffff;
   background-color: red;
   cursor: pointer;
+  line-height: normal;
+
   }
   .flex-box3 h1{
   font-weight: 800;
   font-size: 35px;
-  margin-top: 90px;
-  margin-bottom: -140px;
-  margin-right: 60px ;
+  margin-top: 160px;
+  margin-bottom: -60px;
+  margin-right: 45px ;
   color: rgb(255, 255, 255);
       
+  }
+  .RRR{
+    background-color: #e6f3ff;
   }
 
 
