@@ -22,8 +22,8 @@ class User extends Authenticatable
         'name',
         'prenom',
         'phone_number',
-        'city',
-        'BloodGroup',
+        'city_id',
+        'blood_group_id',
         'DateDernierDon',
         'email',
         'password',
@@ -48,47 +48,73 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function bloodGroup()
+    {
+        return $this->belongsTo(BloodGroup::class);
+    }
+
+    public function City()
+    {
+        return $this->belongsTo(City::class);
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when(
-            $filters['BloodGroup'] ?? false,
-            function ($query, $bloodgroup) {
-                return $query->where('BloodGroup', $bloodgroup);
-            }
+            $filters['bloodGroup'] ?? false,
+            fn ($query, $blood_group) => $query->whereHas(
+                'bloodGroup',
+                fn ($query) => $query->where('id', $blood_group)
+            )
         );
-
         $query->when(
             $filters['city'] ?? false,
-            function ($query, $city) {
-                return $query->where('city', $city);
-            }
+            fn ($query, $city) => $query->whereHas(
+                'city',
+                fn ($query) => $query->where('id', $city)
+            )
         );
     }
+
 
 
     public static function getReadyDonors()
     {
         $lastDonationThreshold = Carbon::now()->subDays(56);
 
-        return static::where('DateDernierDon', '>', $lastDonationThreshold)
+        return static::where('DateDernierDon', '<=', $lastDonationThreshold)
             ->get();
     }
 
-    public static function getOtherDonorsCanDonateTo($bloodGroup, $city = null)
+    public static function getOtherDonorsCanDonateTo($bloodGroupId, $city = null)
     {
-        $readyDonors = static::getReadyDonors();
+        $readyDonors = self::getReadyDonors();
 
-        if (!empty($bloodGroup)) {
-            $otherDonors = $readyDonors->where('BloodGroup', '!=', $bloodGroup);
+        $otherBloodGroups = self::otherBloodGroupsDonorsOf($bloodGroupId);
+
+        if (!empty($otherBloodGroups)) {
+            $query = self::with('bloodGroup')
+                ->whereIn('blood_group_id', $otherBloodGroups)
+                ->whereNotIn('id', $readyDonors->pluck('id')->toArray());
 
             if ($city) {
-                $otherDonors = $otherDonors->where('city', $city);
+                $query->where('city_id', $city);
             }
 
-            return $otherDonors->paginate(10, ['*'], 'other-donors')
+            return $query->inRandomOrder()
+                ->paginate(10, ['*'], 'other-donors')
                 ->appends(request()->except('other-donors'));
         }
 
         return [];
+    }
+
+    public static function getAllReadyToGiveDonors()
+    {
+        $lastDonationThreshold = Carbon::now()->subDays(56);
+
+        return User::with('bloodGroup', 'City')
+            ->where('DateDernierDon', '<=', $lastDonationThreshold)
+            ->paginate(10);
     }
 }

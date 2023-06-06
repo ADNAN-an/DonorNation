@@ -17,15 +17,16 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('prenom');
-            $table->string('phone_number')->unique();
-            $table->string('city');
-            $table->string('BloodGroup');
+            $table->string('phone_number' , 10)->unique();
             $table->date('DateDernierDon');
-            $table->string('email')->unique();
+            $table->string('email' , 255)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreignId('city_id')->constrained();
+            $table->foreignId('blood_group_id')->constrained();
         });
     }
 

@@ -14,39 +14,22 @@
                         class="d-flex flex-column flex-xl-row gap-3" novalidate>
                         @csrf
                         <div class="w-100">
-                            <select name="BloodGroup" id="bloodGroup" class="form-select form-select-lg" required>
+                            <select name="blood_group_id" id="bloodGroup" class="form-select form-select-lg" required>
                                 <option selected hidden style="display:none" value=""> -- Type de sang --</option>
-                                <option value="A+" @if (old('BloodGroup') == 'A+') selected @endif>A+</option>
-                                <option value="B+" @if (old('BloodGroup') == 'B+') selected @endif>B+</option>
-                                <option value="AB+" @if (old('BloodGroup') == 'AB+') selected @endif>AB+</option>
-                                <option value="O+" @if (old('BloodGroup') == 'O+') selected @endif>O+</option>
-                                <option value="A-" @if (old('BloodGroup') == 'A-') selected @endif>A-</option>
-                                <option value="B-" @if (old('BloodGroup') == 'B-') selected @endif>B-</option>
-                                <option value="AB-" @if (old('BloodGroup') == 'AB-') selected @endif>AB-</option>
-                                <option value="O-" @if (old('BloodGroup') == 'O-') selected @endif>O-</option>
-                                <option value="NA" @if (old('BloodGroup') == 'NA') selected @endif>I dont Know
-                                </option>
+                                @foreach ($bloodGroups as $bloodGroup)
+                                    <option value="{{ $bloodGroup['id'] }}">{{ $bloodGroup['BloodGroup'] }} </option>
+                                @endforeach
                             </select>
                             <div class="invalid-feedback">
                                 Ville
                             </div>
                         </div>
                         <div class="w-100">
-                            <select name="city" id="villeSelect" class="form-select form-select-lg">
+                            <select name="city_id" id="villeSelect" class="form-select form-select-lg">
                                 <option selected hidden style="display:none" value="">--Choisir une ville--</option>
-                                <option value="Tanger" @if (old('city') == 'Tanger') selected @endif>Tanger</option>
-                                <option value="Tetouan" @if (old('city') == 'Tetouan') selected @endif>Tétouan</option>
-                                <option value="Larache" @if (old('city') == 'Larache') selected @endif>Larache</option>
-                                <option value="Fes" @if (old('city') == 'Fes') selected @endif>Fes</option>
-                                <option value="Meknes" @if (old('city') == 'Meknes') selected @endif>Meknes</option>
-                                <option value="Casablanca" @if (old('city') == 'Casablanca') selected @endif>Casablanca
-                                </option>
-                                <option value="Rabat" @if (old('city') == 'Rabat') selected @endif>Rabat</option>
-                                <option value="Marrakech" @if (old('city') == 'Marrakech') selected @endif>Marrakech
-                                </option>
-                                <option value="Laayoun" @if (old('city') == 'Laayoun') selected @endif>Laayoun</option>
-                                <option value="Oujda" @if (old('city') == 'Oujda') selected @endif>Oujda</option>
-                                <option value="Other" @if (old('city') == 'Other') selected @endif>Other</option>
+                                @foreach ($cities as $city)
+                                    <option value="{{ $city['id'] }}">{{ $city['name'] }} </option>
+                                @endforeach
                             </select>
                             <div class="invalid-feedback">
                                 ddddddddddddddddddddddd

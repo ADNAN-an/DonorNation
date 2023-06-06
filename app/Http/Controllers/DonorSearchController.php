@@ -2,39 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DonorSearchRequest;
+use App\Models\BloodGroup;
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class DonorSearchController extends Controller
 {
+
+
     public function index(Request $request)
     {
         $request->flush();
+        $cities = City::all();
+        $bloodGroups = BloodGroup::all();
+        $allReadyToGiveDonors = User::getReadyDonors();
 
-        return view('searchResults', ['allReadyToGiveDonors' => User::getReadyDonors()]);
+        return view('searchForm', compact('cities', 'bloodGroups', 'allReadyToGiveDonors'));
     }
+
 
     public function search(DonorSearchRequest $request)
-    {
-        $request->flash();
+{
+    $request->flash();
 
-        $donors = User::where('BloodGroup', $request['BloodGroup'])
-            ->where('city', $request['city'])
-            ->paginate(10);
+    $query = User::with('city', 'bloodGroup')
+        ->filter(request(['blood_group', 'city']))
+        ->inRandomOrder();
 
-        $donors = $donors->filter(function ($donor) {
-            return $donor->DateDernierDon <= now()->subDays(56);
-        });
+    $donors = $query->paginate(10);
 
-        return view('searchResults', [
-            'searchedBloodGroup' => $request['BloodGroup'],
-            'searchedCity' => $request['city'],
-            'donors' => $donors,
-            // 'filteredDonors' => $filteredDonors,
-            'otherDonors' => User::getOtherDonorsCanDonateTo($request['BloodGroup'], $request['city']),
-        ]);
-    }
+    dump($donors);
+
+    return view('pages.donors', [
+        'searchedBloodGroup' => BloodGroup::find($request['blood_group'])->bloodGroup,
+        'searchedCity' => City::find($request['city'])->name,
+        'donors' => $donors,
+        'otherDonors' => User::getOtherDonorsCanDonateTo($request['blood_group'], $request['city']),
+    ]);
+}
+
+
+    public function showDonors()
+{
+    $donors = User::getAllReadyToGiveDonors();
+    
+    return view('donors', compact('donors'));
+}
 }
