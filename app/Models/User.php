@@ -50,7 +50,7 @@ class User extends Authenticatable
 
     public function bloodGroup()
     {
-        return $this->belongsTo(BloodGroup::class);
+        return $this->belongsTo(BloodGroup::class,'blood_group_id');
     }
 
     public function City()
@@ -110,11 +110,12 @@ class User extends Authenticatable
     }
 
     public static function getAllReadyToGiveDonors()
-    {
-        $lastDonationThreshold = Carbon::now()->subDays(56);
+{
+    $lastDonationThreshold = Carbon::now()->subDays(56);
 
-        return User::with('bloodGroup', 'City')
-            ->where('DateDernierDon', '<=', $lastDonationThreshold)
-            ->paginate(10);
-    }
+    return User::with('bloodGroup', 'City')
+        ->where('DateDernierDon', '<=', $lastDonationThreshold)
+        ->paginate(10);
+}
+
 }

@@ -12,6 +12,7 @@ class DonorSearchController extends Controller
 {
 
 
+
     public function index(Request $request)
     {
         $request->flush();
@@ -23,26 +24,46 @@ class DonorSearchController extends Controller
     }
 
 
-    public function search(DonorSearchRequest $request)
-{
-    $request->flash();
+    public function search(Request $request)
+    {
 
-    $query = User::with('city', 'bloodGroup')
-        ->filter(request(['blood_group', 'city']))
-        ->inRandomOrder();
+        $city = City::where('id', $request->city_id)->first();
+        $city_name = $city->name;
 
-    $donors = $query->paginate(10);
 
-    dump($donors);
+        $blog_group = BloodGroup::where('id', $request->blood_group_id)->first();
+        $blog_group_name = $blog_group->BloodGroup;
 
-    return view('pages.donors', [
-        'searchedBloodGroup' => BloodGroup::find($request['blood_group'])->bloodGroup,
-        'searchedCity' => City::find($request['city'])->name,
-        'donors' => $donors,
-        'otherDonors' => User::getOtherDonorsCanDonateTo($request['blood_group'], $request['city']),
-    ]);
-}
+        /* dd($city_name);
+        exit(); */
 
+        $users = User::all();
+
+
+        //dd($request->all());
+        //exit();
+        $request->flash();
+
+        $query = User::with('city', 'bloodGroup')
+            ->filter(request([$city_name, $blog_group_name]))
+            ->inRandomOrder();
+
+        /* $query = User::with('city', 'bloodGroup')
+            ->filter(request(['blood_group', 'city']))
+            ->inRandomOrder(); */
+
+        $donors = $query->paginate(10);
+
+        dd($donors);
+        exit();
+
+        return view('searchResults', [
+            'searchedBloodGroup' => BloodGroup::find($request['blood_group'])->bloodGroup,
+            'searchedCity' => City::find($request['city'])->name,
+            'donors' => $donors,
+            'otherDonors' => User::getOtherDonorsCanDonateTo($request['blood_group'], $request['city']),
+        ]);
+    }
 
     public function showDonors()
 {

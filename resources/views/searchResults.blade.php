@@ -58,6 +58,8 @@
                                     </strong>
                                 </div>
                             </div>
+                        @endif
+                    @endif
         </div>
         @endforeach
         {{ $donors->withQueryString()->links() }}
