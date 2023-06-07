@@ -27,41 +27,67 @@ class DonorSearchController extends Controller
     public function search(Request $request)
     {
 
-        $city = City::where('id', $request->city_id)->first();
-        $city_name = $city->name;
+        $query = null;
+        $city = null;
+        $blog_group = null;
+
+        if ($request->city_id !== null) {
+            $city = City::where('id', $request->city_id)->first();
+            $city_name = $city->name;
+
+            $donors =  User::where('city_id', $request->city_id)->paginate(10);
+        }
 
 
-        $blog_group = BloodGroup::where('id', $request->blood_group_id)->first();
-        $blog_group_name = $blog_group->BloodGroup;
+        if ($request->blood_group_id !== null) {
+            $blog_group = BloodGroup::where('id', $request->blood_group_id)->first();
+            $blog_group_name = $blog_group->BloodGroup;
 
-        /* dd($city_name);
-        exit(); */
+            $donors =  User::where('blood_group_id', $request->blood_group_id)->paginate(10);
+        }
+
+
+        if ($request->blood_group_id !== null && $request->city_id !== null) {
+
+            $city = City::where('id', $request->city_id)->first();
+            $city_name = $city->name;
+
+            $blog_group = BloodGroup::where('id', $request->blood_group_id)->first();
+            $blog_group_name = $blog_group->BloodGroup;
+
+            $donors =  User::where('city_id', $request->city_id)
+                ->where('blood_group_id', $request->blood_group_id)
+                ->inRandomOrder()
+                ->paginate(10);
+        }
+
+        $allReadyToGiveDonors = User::getReadyDonors();
+        $cities = City::all();
+        $bloodGroups = BloodGroup::all();
+
 
         $users = User::all();
 
-
-        //dd($request->all());
-        //exit();
         $request->flash();
 
-        $query = User::with('city', 'bloodGroup')
-            ->filter(request([$city_name, $blog_group_name]))
-            ->inRandomOrder();
 
         /* $query = User::with('city', 'bloodGroup')
-            ->filter(request(['blood_group', 'city']))
+            ->filter(request(['blood_group_id', 'city_id']))
             ->inRandomOrder(); */
 
-        $donors = $query->paginate(10);
+        // = $query->paginate(10);
 
-        dd($donors);
-        exit();
+        /* dd($donors);
+        exit(); */
 
         return view('searchResults', [
-            'searchedBloodGroup' => BloodGroup::find($request['blood_group'])->bloodGroup,
-            'searchedCity' => City::find($request['city'])->name,
+            'searchedBloodGroup' => $blog_group,
+            'searchedCity' => $city,
             'donors' => $donors,
-            'otherDonors' => User::getOtherDonorsCanDonateTo($request['blood_group'], $request['city']),
+            'allReadyToGiveDonors' => $allReadyToGiveDonors,
+            'cities' => $cities,
+            'bloodGroups' => $bloodGroups,
+            //'otherDonors' => User::getOtherDonorsCanDonateTo($request->blood_group_id, $request->city_id),
         ]);
     }
 

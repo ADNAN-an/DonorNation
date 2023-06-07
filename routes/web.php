@@ -44,7 +44,7 @@ Route::get('/blood-donation-process', function () {
 
 Route::prefix('/donors')->group(function () {
     Route::get('', [DonorSearchController::class, 'index'])->name('donorsPage');
-    Route::get('/search', [DonorSearchController::class, 'search'])->name('donorsSearch');
+    Route::post('/search', [DonorSearchController::class, 'search'])->name('donorsSearch');
 });
 
 
