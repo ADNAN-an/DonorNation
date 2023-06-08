@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('prenom');
             $table->string('phone_number' , 10)->unique();
+            $table->integer('role')->default('0');
             $table->date('DateDernierDon');
             $table->string('email' , 255)->unique();
             $table->timestamp('email_verified_at')->nullable();

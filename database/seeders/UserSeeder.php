@@ -2,26 +2,50 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 use Faker\Factory as Faker;
 
 class UserSeeder extends Seeder
 {
+    /**
+     * Run the seeder.
+     *
+     * @return void
+     */
     public function run()
     {
+        $cities = DB::table('cities')->pluck('id');
+        $bloodGroups = DB::table('blood_groups')->pluck('id');
         $faker = Faker::create();
-        $cities = ['Tanger', 'Tetouan', 'Larache', 'Fes', 'Meknes', 'Casablanca', 'Rabat', 'Marrakech', 'Laayoun', 'Oujda', 'Other'];
-        for ($i = 1; $i <= 20; $i++) {
-            User::create([
-                'name' => $faker->name,
+
+        for ($i = 0; $i < 10; $i++) {
+            $minDate = Carbon::today()->subDays(60);
+
+            DB::table('users')->insert([
+                'name' => $faker->firstName,
                 'prenom' => $faker->lastName,
-                'phone_number' => $faker->phoneNumber,
-                'city' => $faker->randomElement($cities),
-                'BloodGroup' => $faker->randomElement(['A+', 'B+', 'AB+', 'O+', 'A-', 'B-', 'AB-', 'O-']),
-                'DateDernierDon' => $faker->date(),
+                'phone_number' => $faker->unique()->numerify('06########'),
+                'DateDernierDon' => $this->getRandomDate($minDate),
                 'email' => $faker->unique()->safeEmail,
-                'password' => bcrypt('password'),
+                'password' => Hash::make('password'),
+                'city_id' => $cities->random(),
+                'blood_group_id' => $bloodGroups->random(),
+                'created_at' => now(),
             ]);
         }
+    }
+
+    /**
+     * Get a random date between $minDate and today.
+     *
+     * @param  \Carbon\Carbon  $minDate
+     * @return \Carbon\Carbon
+     */
+    private function getRandomDate($minDate)
+    {
+        $maxDate = Carbon::today();
+        return Carbon::createFromTimestamp(rand($minDate->timestamp, $maxDate->timestamp));
     }
 }
