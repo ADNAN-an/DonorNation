@@ -12,7 +12,6 @@ class DonorSearchController extends Controller
 {
 
 
-
     public function index(Request $request)
     {
         $request->flush();
@@ -27,11 +26,23 @@ class DonorSearchController extends Controller
     public function search(Request $request)
     {
 
+        $request->validate([
+            'blood_group_id' => 'required|string',
+            'city_id'        => 'nullable|string',
+        ], [
+            'blood_group_id.required' => 'Le Blood Group is Required'
+        ]);
+
+        /* $app = User::getOtherDonorsCanDonateTo($request->blood_group_id, $request->city_id);
+        dd($app);
+        exit();
+ */
         $query = null;
         $city = null;
         $blog_group = null;
 
         if ($request->city_id !== null) {
+
             $city = City::where('id', $request->city_id)->first();
             $city_name = $city->name;
 
@@ -39,7 +50,8 @@ class DonorSearchController extends Controller
         }
 
 
-        if ($request->blood_group_id !== null) {
+        if ($request->blood_group_id != null) {
+
             $blog_group = BloodGroup::where('id', $request->blood_group_id)->first();
             $blog_group_name = $blog_group->BloodGroup;
 
@@ -48,6 +60,7 @@ class DonorSearchController extends Controller
 
 
         if ($request->blood_group_id !== null && $request->city_id !== null) {
+
 
             $city = City::where('id', $request->city_id)->first();
             $city_name = $city->name;
@@ -87,14 +100,15 @@ class DonorSearchController extends Controller
             'allReadyToGiveDonors' => $allReadyToGiveDonors,
             'cities' => $cities,
             'bloodGroups' => $bloodGroups,
-            //'otherDonors' => User::getOtherDonorsCanDonateTo($request->blood_group_id, $request->city_id),
+            'otherDonors' => User::getOtherDonorsCanDonateTo($request->blood_group_id, $request->city_id),
         ]);
     }
 
+
     public function showDonors()
-{
-    $donors = User::getAllReadyToGiveDonors();
-    
-    return view('donors', compact('donors'));
-}
+    {
+        $donors = User::getAllReadyToGiveDonors();
+
+        return view('donors', compact('donors'));
+    }
 }

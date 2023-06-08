@@ -35,6 +35,7 @@ Auth::routes();
 Route::get('/blood-donation-process', function () {
     return view('donner');
 });
+
 // Route::get('/search', function () {
 //     return view('search');
 // });

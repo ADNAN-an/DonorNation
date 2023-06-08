@@ -132,6 +132,7 @@
                                     </strong>
                                 </div>
                             </div>
+                            
              @endforeach
 
                  {{-- {{ $donors->links() }} --}}
